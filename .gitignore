@@ -1,0 +1,14 @@
+**/__pycache__/
+**/.venv/
+*.pyc
+*.private.*
+*.sqlite*
+*.db*
+*.zip
+*.exe
+*.key
+*.pem
+local.json
+exports/
+working/
+archives/

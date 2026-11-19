@@ -1,0 +1,12 @@
+{
+  "export_dir": "C:/LocalArchives/AgentExports",
+  "qq": {
+    "core": "C:/Apps/QQArchiveNext/backend/QQArchiveCore/QQArchiveCore.exe",
+    "state": "C:/LocalArchives/QQState"
+  },
+  "wechat": {
+    "root": "C:/LocalArchives/WeChatInstallation",
+    "source_dir": "C:/Apps/CaptureNext-source",
+    "python": "C:/Apps/CaptureNext-source/.venv/Scripts/python.exe"
+  }
+}
