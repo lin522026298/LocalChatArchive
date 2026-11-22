@@ -7,7 +7,7 @@
 | 平台 | 需要先准备 | 技能使用的入口 |
 | --- | --- | --- |
 | QQ | [QQArchiveNext v1.0.0](https://github.com/lin522026298/QQArchiveNext/releases/tag/v1.0.0) 和已可查看的本地档案 | 便携版的 `QQArchiveCore.exe`，仅调用已发布的 `agent call` 读取操作 |
-| 微信 | [CaptureNext v0.1.0](https://github.com/lin522026298/CaptureNext/releases/tag/v0.1.0) 和已归并的本地档案，另需对应 [CaptureNext 源码](https://github.com/lin522026298/CaptureNext/tree/v0.1.0) 及 Python 环境 | 本技能附带的小型只读适配器；不必修改或重新编译 CaptureNext |
+| 微信 | [CaptureNext v0.1.1](https://github.com/lin522026298/CaptureNext/releases/tag/v0.1.1) 和已归并的本地档案，另需对应 [CaptureNext 源码](https://github.com/lin522026298/CaptureNext/tree/v0.1.1) 及 Python 环境 | CaptureNext 自带的账号限定只读入口；不必重新编译桌面程序 |
 
 同一档案可含多个账号。每次查消息必须指定账号，不把昵称或当前登录视为身份，不默认跨账号搜索。想查的是另一份安装或恢复档案，请另建配置文件。只读的是已归档的版本；未同步到本机、尚未归档、无法确认关联或旧客户端格式不会因使用 Agent 自动补齐。
 
@@ -31,7 +31,7 @@ Copy-Item -LiteralPath './examples/profile.example.json' -Destination (Join-Path
 仅查 QQ 不需要 CaptureNext 或额外 Python 包。若查微信，可从可信渠道按部署需要核对依赖版本并创建独立虚拟环境：
 
 ```powershell
-git clone --branch v0.1.0 --depth 1 https://github.com/lin522026298/CaptureNext.git
+git clone --branch v0.1.1 --depth 1 https://github.com/lin522026298/CaptureNext.git
 python -m venv ./CaptureNext/.venv
 & ./CaptureNext/.venv/Scripts/python.exe -m pip install -r ./CaptureNext/requirements.txt
 ```
@@ -45,6 +45,10 @@ python $chat wechat accounts
 ```
 
 实际要求示例：“用刚确认的 QQ 账号，在指定群里搜合同，给我消息前后文；只有原件能验证才保存一份。”详细选参及取件见 [技能](local-chat-archive/SKILL.md) 和 [使用说明](local-chat-archive/references/usage.md)。
+
+查找“改过的那份”时，先用会话前后文确定哪条消息指向修订版，再验证那条消息的原件。微信旧版源码可能漏识别另存时自动加编号的同名文件；更新技能指引本身不能替代更新 `source_dir` 指向的 CaptureNext 源码。
+
+升级可把新源码和虚拟环境放在独立目录，先保留旧版技能和私有配置备份，再更新技能及 `source_dir`、`python` 两项。若需要回退，恢复旧技能和对应旧配置；无需改动正式档案。只读查询不需要重新取钥；若确认采集因当前密钥失效而中断，请按[归档工具的密钥故障排查](https://github.com/lin522026298/CaptureNext/blob/v0.1.1/docs/configuration.md#密钥不可用时)处理。
 
 ## 验收与隐私
 

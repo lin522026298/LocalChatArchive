@@ -145,8 +145,7 @@ def qq(profile, args):
 def wechat(profile, args):
     conf=profile['wechat']
     root,python,cwd = (local(conf[key]) for key in ('root','python','source_dir'))
-    adapter=Path(__file__).with_name('wechat_reader.py')
-    command = [str(python),str(adapter),'--root',str(root),args.operation]
+    command = [str(python),'-m','wechat_capture_next.agent_archive','--root',str(root),args.operation]
     for field in ('account','query','id','limit','offset','conversation','sender','message_type','since','until',
                   'after_file','after_image','kind','sha','expected_md5'):
         value=getattr(args,field,None)

@@ -12,7 +12,7 @@ import unittest
 
 from tests.test_wua_store import observation
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'local-chat-archive/scripts'))
-from wechat_reader import execute, parse, Refusal
+from wechat_capture_next.agent_archive import execute, parse, Refusal
 from wechat_capture_next.cas_stream import publish
 from wechat_capture_next.compact_archive import CompactArchive
 from wechat_capture_next.tests.test_union_assets import OfflineService
